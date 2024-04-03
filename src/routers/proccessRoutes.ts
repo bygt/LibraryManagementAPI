@@ -182,15 +182,9 @@ router.post("/users/:user_id/rate/:book_id/score/:score",catchAsync (async (req:
           score,
         });
 
-		console.log("totalScore", parseInt(book_totalscore));
-		console.log("yeni verilen score", parseInt(score));
         const newScore = parseInt(book_totalscore) + parseInt(score);
-	
-		console.log("newScore", newScore)
 
         const newAvg = newScore / (totalScore.count + 1);
-		console.log("totalScore count ", totalScore.count);
-		console.log("newAvg", newAvg);
 
 		const updateBook = await Book.update(
 		  { avg_rating: newAvg },

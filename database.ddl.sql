@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 03 Nis 2024, 17:01:23
+-- Üretim Zamanı: 03 Nis 2024, 17:10:13
 -- Sunucu sürümü: 10.4.28-MariaDB
 -- PHP Sürümü: 8.2.4
 
@@ -42,7 +42,8 @@ CREATE TABLE `books` (
 INSERT INTO `books` (`book_id`, `book_name`, `current_owner_id`, `avg_rating`, `is_available`) VALUES
 (1, 'algernon\'a çiçekler', 1, 4.00, 1),
 (2, 'Dune', 2, 2.00, 0),
-(3, 'Empati', NULL, 0.00, 1);
+(3, 'Empati', 2, 0.00, 0),
+(4, 'Neuromancer', NULL, 0.00, 1);
 
 -- --------------------------------------------------------
 
@@ -64,7 +65,9 @@ CREATE TABLE `ownership` (
 INSERT INTO `ownership` (`ownership_id`, `user_id`, `book_id`, `status`) VALUES
 (1, 1, 1, 1),
 (2, 1, 2, 0),
-(3, 2, 2, 1);
+(3, 2, 2, 1),
+(4, 2, 4, 1),
+(5, 2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -119,7 +122,7 @@ INSERT INTO `users` (`user_id`, `username`) VALUES
 --
 ALTER TABLE `books`
   ADD PRIMARY KEY (`book_id`),
-  ADD UNIQUE KEY `current_owner_id` (`current_owner_id`);
+  ADD KEY `current_owner_id` (`current_owner_id`);
 
 --
 -- Tablo için indeksler `ownership`
@@ -151,13 +154,13 @@ ALTER TABLE `users`
 -- Tablo için AUTO_INCREMENT değeri `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `ownership`
 --
 ALTER TABLE `ownership`
-  MODIFY `ownership_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ownership_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `ratings`
